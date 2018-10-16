@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
-import Home from '../pages/containers/home';
+import Videos from '../pages/containers/videos';
+import Home from './../pages/components/home';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reducer from '../reducers/index';
@@ -9,7 +10,7 @@ import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import Header from './../pages/components/header';
 // function logger({ getState, dispatch}) {
 //   return (next) => {
@@ -54,7 +55,12 @@ render(
     <Provider store={store}>
       <React.Fragment>
         <Header />
-        <Home />
+        <Route
+          path="/" 
+          component={Home}
+          exact
+        />
+        <Route exact path="/videos" component={Videos} />
       </React.Fragment>
     </Provider>
   </BrowserRouter>
