@@ -10,7 +10,7 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import { BrowserRouter } from 'react-router-dom';
-
+import Header from './../pages/components/header';
 // function logger({ getState, dispatch}) {
 //   return (next) => {
 //     return (action) => {
@@ -49,10 +49,13 @@ const homeContainer = document.getElementById('home-container')
 
 render(
   <BrowserRouter
-    basename="/videos"
+    basename="/"
   >
     <Provider store={store}>
-      <Home />
+      <React.Fragment>
+        <Header />
+        <Home />
+      </React.Fragment>
     </Provider>
   </BrowserRouter>
 , homeContainer);
