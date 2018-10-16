@@ -2,6 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import Videos from '../pages/containers/videos';
 import Home from './../pages/components/home';
+import NotFound from './../pages/components/not-found';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reducer from '../reducers/index';
@@ -49,18 +50,17 @@ const homeContainer = document.getElementById('home-container')
 
 
 render(
-  <BrowserRouter
-    basename="/"
-  >
+  <BrowserRouter>
     <Provider store={store}>
       <React.Fragment>
         <Header />
         <Route
+          exact
           path="/" 
           component={Home}
-          exact
         />
         <Route exact path="/videos" component={Videos} />
+        <Route component={NotFound} />
       </React.Fragment>
     </Provider>
   </BrowserRouter>
